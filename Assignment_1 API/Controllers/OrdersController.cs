@@ -28,9 +28,8 @@ namespace Assignment_1_API.Controllers
           {
               return NotFound();
           }
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders.Include(o => o.Staff).ToListAsync();
         }
-
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
@@ -39,7 +38,9 @@ namespace Assignment_1_API.Controllers
           {
               return NotFound();
           }
-            var order = await _context.Orders.FindAsync(id);
+            var order = await _context.Orders
+                   .Include(o => o.Staff)
+                   .FirstOrDefaultAsync(m => m.OrderId == id);
 
             if (order == null)
             {

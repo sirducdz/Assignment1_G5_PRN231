@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ObjectBusiness.Models;
+
 namespace Assignment1_ClientWebApp
 {
     public class Program
@@ -8,7 +11,8 @@ namespace Assignment1_ClientWebApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            var connectionString = builder.Configuration.GetConnectionString("Default");
+            builder.Services.AddDbContext<MyStore_G5Context>(options => { options.UseSqlServer(connectionString); });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,7 +28,7 @@ namespace Assignment1_ClientWebApp
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=orders}/{action=Index}/{id?}");
 
             app.Run();
         }

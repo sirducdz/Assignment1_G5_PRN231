@@ -11,9 +11,7 @@ namespace ObjectBusiness.Models
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public int UnitPrice { get; set; }
-        [JsonIgnore]
-        public virtual Order Order { get; set; } = null!;
-        [JsonIgnore]
-        public virtual Product Product { get; set; } = null!;
+        public virtual Order? Order { get; set; } = null!;
+        public virtual Product? Product { get; set; } = null!;
     }
 }

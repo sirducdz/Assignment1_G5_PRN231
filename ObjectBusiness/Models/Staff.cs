@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace ObjectBusiness.Models
@@ -12,6 +13,7 @@ namespace ObjectBusiness.Models
         }
 
         public int StaffId { get; set; }
+        [Display(Name ="Staff Name")]
         public string Name { get; set; } = null!;
         public string Password { get; set; } = null!;
         public int Role { get; set; }

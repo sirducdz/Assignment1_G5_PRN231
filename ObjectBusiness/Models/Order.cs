@@ -14,9 +14,9 @@ namespace ObjectBusiness.Models
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public int StaffId { get; set; }
+        //[JsonIgnore]
+        public virtual Staff? Staff { get; set; } = null!;
         [JsonIgnore]
-        public virtual Staff Staff { get; set; } = null!;
-        [JsonIgnore]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
     }
 }
